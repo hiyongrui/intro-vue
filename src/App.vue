@@ -1,9 +1,11 @@
 <script>
 import BenderStatistics from './components/BenderStatistics.vue';
+import UserCard from './components/UserCard.vue';
 
 export default {
   components: {
     BenderStatistics,
+    UserCard
 },
   data: () => ({
     newCharacter: {
@@ -29,6 +31,10 @@ export default {
       },
     ],
     favoriteList: [],
+    userData: {
+      name: "ben",
+      favoriteFood: "pizza",
+    }
   }),
 
   methods: {
@@ -44,6 +50,7 @@ export default {
 </script>
 
 <template>
+  <UserCard :user="userData" />
   <BenderStatistics :characters="characterList" />
   <h2>Characters</h2>
   <p v-if="characterList.length === 0">There are no characters</p>
