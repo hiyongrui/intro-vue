@@ -1,19 +1,15 @@
 <script>
 export default {
     props: {
-        name: {
-            type: String,
-            default: "John Doe"
+        user: {
+            type: Object,
+            required: true,
         },
-        food: {
-            type: String,
-            default: "Cheeseburger"
-        }
-    }
+    },
 }
 </script>
 
 <template>
-    <h1> User: {{name}} </h1>
-    <p> Fav food: {{food}} </p>
+    <h1> User: {{user.name}} </h1>
+    <p> Fav food: {{user.food}} </p>
 </template>

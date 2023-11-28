@@ -36,7 +36,14 @@ export default {
       favoriteFood: "pizza",
     }
   }),
-
+  computed: {
+    refinedUserData() {
+      return {
+        name: this.userData.name.toUpperCase(),
+        food: this.userData.favoriteFood.toUpperCase(),
+      };
+    }
+  },
   methods: {
     addNewCharacter() {
       this.characterList.push(this.newCharacter);
@@ -50,7 +57,7 @@ export default {
 </script>
 
 <template>
-  <UserCard :name="userData.name"/>
+  <UserCard :user="refinedUserData"/>
   <BenderStatistics :characters="characterList" />
   <h2>Characters</h2>
   <p v-if="characterList.length === 0">There are no characters</p>
