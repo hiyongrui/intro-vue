@@ -50,7 +50,7 @@ export default {
 </script>
 
 <template>
-  <UserCard :user="userData" />
+  <UserCard :name="userData.name"/>
   <BenderStatistics :characters="characterList" />
   <h2>Characters</h2>
   <p v-if="characterList.length === 0">There are no characters</p>
