@@ -1,12 +1,12 @@
 <script>
-import BenderStatistics from './components/BenderStatistics.vue';
-import UserCard from './components/UserCard.vue';
+import BenderStatistics from "./components/BenderStatistics.vue";
+import UserCard from "./components/UserCard.vue";
 
 export default {
   components: {
     BenderStatistics,
-    UserCard
-},
+    UserCard,
+  },
   data: () => ({
     newCharacter: {
       name: "",
@@ -34,7 +34,7 @@ export default {
     userData: {
       name: "ben",
       favoriteFood: "pizza",
-    }
+    },
   }),
   computed: {
     refinedUserData() {
@@ -42,7 +42,7 @@ export default {
         name: this.userData.name.toUpperCase(),
         food: this.userData.favoriteFood.toUpperCase(),
       };
-    }
+    },
   },
   methods: {
     addNewCharacter() {
@@ -52,12 +52,15 @@ export default {
     favoriteCharacter(character) {
       this.favoriteList.push(character);
     },
+    changeName() {
+      this.userData.name = "Charlie";
+    },
   },
 };
 </script>
 
 <template>
-  <UserCard :user="refinedUserData"/>
+  <UserCard :user="refinedUserData" @change-name="changeName" />
   <BenderStatistics :characters="characterList" />
   <h2>Characters</h2>
   <p v-if="characterList.length === 0">There are no characters</p>
