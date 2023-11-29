@@ -3,6 +3,7 @@ import BenderStatistics from "./components/BenderStatistics.vue";
 import UserCard from "./components/UserCard.vue";
 import CharacterCard from "./components/CharacterCard.vue";
 import BaseButton from "./components/BaseButton.vue";
+import BaseLayout from "./components/BaseLayout.vue";
 
 export default {
   components: {
@@ -10,6 +11,7 @@ export default {
     UserCard,
     CharacterCard,
     BaseButton,
+    BaseLayout,
   },
   data: () => ({
     newCharacter: {
@@ -64,6 +66,19 @@ export default {
 </script>
 
 <template>
+  <BaseLayout>
+    <template v-slot:two>
+      <h2>New Character</h2>
+      <pre>{{ newCharacter }}</pre>
+      <label for="character-name">Name</label>
+      <input type="text" v-model="newCharacter.name" @keyup.enter="addNewCharacter" />
+      <p>
+        <span v-for="(character, index) in characterList" :key="`comma-list-character-${index}`">
+          {{ character.name }}{{ index === characterList.length - 1 ? "" : ", " }}
+        </span>
+      </p>
+    </template>
+  </BaseLayout>
   <BaseButton :left="true"></BaseButton>
 
   <UserCard :user="refinedUserData" @change-name="changeName" />
@@ -84,13 +99,4 @@ export default {
     </li>
   </ul>
   <p v-else>No favorite characters yet!</p>
-  <h2>New Character</h2>
-  <pre>{{ newCharacter }}</pre>
-  <label for="character-name">Name</label>
-  <input type="text" v-model="newCharacter.name" @keyup.enter="addNewCharacter" />
-  <p>
-    <span v-for="(character, index) in characterList" :key="`comma-list-character-${index}`">
-      {{ character.name }}{{ index === characterList.length - 1 ? "" : ", " }}
-    </span>
-  </p>
 </template>
