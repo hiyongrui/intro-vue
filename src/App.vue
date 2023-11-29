@@ -2,12 +2,14 @@
 import BenderStatistics from "./components/BenderStatistics.vue";
 import UserCard from "./components/UserCard.vue";
 import CharacterCard from "./components/CharacterCard.vue";
+import BaseButton from "./components/BaseButton.vue";
 
 export default {
   components: {
     BenderStatistics,
     UserCard,
     CharacterCard,
+    BaseButton,
   },
   data: () => ({
     newCharacter: {
@@ -62,6 +64,8 @@ export default {
 </script>
 
 <template>
+  <BaseButton :left="true"></BaseButton>
+
   <UserCard :user="refinedUserData" @change-name="changeName" />
   <BenderStatistics :characters="characterList" />
   <h2>Characters</h2>
