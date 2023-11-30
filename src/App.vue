@@ -11,7 +11,7 @@ export default {
 <template>
   <h1>New app</h1>
   <Suspense>
-    <Pokemon />
+    <Pokemon region="abc" />
     <template v-slot:fallback>Loading pokemon data...</template>
   </Suspense>
 </template>
