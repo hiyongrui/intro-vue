@@ -33,9 +33,7 @@ export default {
 
 <template>
   <header class="header">
-    <span class="logo">
-      <img src="@/assets/vue-heart.png" width="30" />C'est La Vue
-    </span>
+    <span class="logo"> <img src="@/assets/vue-heart.png" width="30" />C'est La Vue </span>
     <nav class="nav">
       <a href="#" @click.prevent="showHomePage">Home</a>
       <a href="#" @click.prevent="showLoginPage">Login</a>
@@ -44,7 +42,10 @@ export default {
   </header>
   <!-- <HomePage v-if="currentPage === 'Home'" />
   <LoginPage v-else /> -->
-  <component :is="renderPage" />
+  <Suspense>
+    <component :is="renderPage" />
+    <template #fallback> Data is loading... </template>
+  </Suspense>
 </template>
 
 <style>
