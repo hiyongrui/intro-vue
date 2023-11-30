@@ -1,26 +1,23 @@
 <script>
-import UserCard from './UserCard.vue';
-
-
+import UserCard from "./UserCard.vue";
 
 export default {
-    components: {
-        UserCard
+  components: {
+    UserCard,
+  },
+  data() {
+    return {
+      userList: [],
+    };
+  },
+  methods: {
+    async fetchUsers() {
+      this.userList = await fetch("https://jsonplaceholder.typicode.com/users").then((res) => res.json());
     },
-    data() {
-        return {
-            userList: [],
-        };
-    },
-    methods: {
-        async fetchUsers() {
-            this.userList = await fetch("https://jsonplaceholder.typicode.com/users").then((res) => res.json());
-        },
-    },
-    created() {
-        this.fetchUsers();
-    },
-    components: { UserCard, UserCard, UserCard }
+  },
+  created() {
+    this.fetchUsers();
+  },
 };
 </script>
 
@@ -28,7 +25,7 @@ export default {
   <main>
     <h1>Users</h1>
     <ul>
-        <UserCard v-for="user in userList" :key="user.id" :user="user" />
+      <UserCard v-for="user in userList" :key="user.id" :user="user" />
     </ul>
     <!-- <pre>
         {{ userList }}
