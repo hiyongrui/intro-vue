@@ -1,17 +1,9 @@
-<script>
-import Pokemon from "./components/pokemon.vue";
-
-export default {
-  components: {
-    Pokemon,
-  },
-};
+<script setup>
+import BaseCounter from "./components/BaseCounter.vue";
+import UserCard from "./components/UserCard.vue";
 </script>
 
 <template>
-  <h1>New app</h1>
-  <Suspense>
-    <Pokemon region="abc" />
-    <template v-slot:fallback>Loading pokemon data...</template>
-  </Suspense>
+  <BaseCounter />
+  <UserCard :user="{ name: 'Ben', food: 'Cheeseburger' }" />
 </template>
