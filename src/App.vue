@@ -13,7 +13,7 @@ html {
   background-color: papayawhip;
 }
 
-button {
+.button {
   border: 10px solid red;
 }
 </style>
