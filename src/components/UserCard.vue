@@ -1,25 +1,34 @@
 <script>
-import { newCount } from "../composables/countStore";
+import { useCount } from "../composables/countStore";
 
 export default {
-    setup() {
-        return {
-            newCount,
-        };
+  setup() {
+    const countStore = useCount();
+
+    return {
+      countStore,
+    };
+  },
+  props: {
+    user: {
+      type: Object,
+      required: true,
     },
-    props: {
-        user: {
-            type: Object,
-            required: true,
-        },
-    },
-    emits: ['change-name'],
-}
+  },
+  emits: ["change-name"],
+};
 </script>
 
 <template>
-    <h1> User: {{user.name}} </h1>
-    <h2>User New Count: {{ newCount }}</h2>
-    <p> Fav food: {{user.food}} </p>
-    <button @click="$emit('change-name')">Change Name</button>
+  <h1>User: {{ user.name }}</h1>
+
+  <h2>new Counter</h2>
+  <p>Global count: {{ countStore.globalCount }}</p>
+  <p>Local count: {{ countStore.localCount }}</p>
+  <button @click="countStore.incrementGlobalCount">Globals</button>
+  <button @click="countStore.incrementLocalCount">Local</button>
+  <hr />
+
+  <p>Fav food: {{ user.food }}</p>
+  <button @click="$emit('change-name')">Change Name</button>
 </template>
