@@ -7,3 +7,13 @@ import UserCard from "./components/UserCard.vue";
   <BaseCounter />
   <UserCard :user="{ name: 'Ben', food: 'Cheeseburger' }" />
 </template>
+
+<style>
+html {
+  background-color: papayawhip;
+}
+
+button {
+  border: 10px solid red;
+}
+</style>
