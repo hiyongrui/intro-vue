@@ -8,6 +8,11 @@ const colorPreference = ref("white");
 
 <template>
   <div class="wrapper">
+    <nav>
+      <router-link to="/">Home</router-link>
+      <router-link to="/pokemon">Pokemon</router-link>
+    </nav>
+    <router-view />
     <h2>{{ colorPreference }}</h2>
     <input type="color" v-model="colorPreference" />
     <BaseCounter />
