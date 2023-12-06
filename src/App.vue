@@ -23,7 +23,7 @@ watch(countStore.globalCount, (val) => {
   <div class="wrapper">
     <nav>
       <router-link to="/">Home</router-link>
-      <router-link to="/pokemon">Pokemon</router-link>
+      <router-link to="/pokedex">Pokedex</router-link>
     </nav>
     <h2>{{ countStore.globalCount }}</h2>
     <router-view />
